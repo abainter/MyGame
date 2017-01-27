@@ -158,32 +158,36 @@ public class ThemeScreen implements Screen {
         spaceButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                VariableWrapper.projectileImage=new Texture(Gdx.files.internal("asteroid.png"));
-                VariableWrapper.targetImage=new Texture(Gdx.files.internal("spaceship.png"));
+                Settings.projectileImage=new Texture(Gdx.files.internal("asteroid.png"));
+                Settings.targetImage=new Texture(Gdx.files.internal("spaceship.png"));
+                Settings.background=new Texture(Gdx.files.internal("space.jpeg"));
             }
         });
 
         aquaticButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                VariableWrapper.projectileImage=new Texture(Gdx.files.internal("shark.png"));
-                VariableWrapper.targetImage=new Texture(Gdx.files.internal("fish.png"));
+                Settings.projectileImage=new Texture(Gdx.files.internal("shark.png"));
+                Settings.targetImage=new Texture(Gdx.files.internal("fish.png"));
+                Settings.background=new Texture(Gdx.files.internal("underwater.jpg"));
             }
         });
 
         safariButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                VariableWrapper.projectileImage=new Texture(Gdx.files.internal("lion.png"));
-                VariableWrapper.targetImage=new Texture(Gdx.files.internal("monkey.png"));
+                Settings.projectileImage=new Texture(Gdx.files.internal("lion.png"));
+                Settings.targetImage=new Texture(Gdx.files.internal("monkey.png"));
+                Settings.background=new Texture(Gdx.files.internal("safari.jpg"));
             }
         });
 
         cityButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                VariableWrapper.projectileImage=new Texture(Gdx.files.internal("car.png"));
-                VariableWrapper.targetImage=new Texture(Gdx.files.internal("person.png"));
+                Settings.projectileImage=new Texture(Gdx.files.internal("car.png"));
+                Settings.targetImage=new Texture(Gdx.files.internal("person.png"));
+                Settings.background=new Texture(Gdx.files.internal("city.png"));
             }
         });
 

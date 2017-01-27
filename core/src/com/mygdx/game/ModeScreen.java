@@ -114,7 +114,7 @@ public class ModeScreen implements Screen {
         speedButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                VariableWrapper.mode="SPEED";
+                Settings.mode="SPEED";
                 textArea.setText("New projectiles will spawn with increased velocity");
             }
         });
@@ -122,7 +122,7 @@ public class ModeScreen implements Screen {
         quantityButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                VariableWrapper.mode = "QUANTITY";
+                Settings.mode = "QUANTITY";
                 textArea.setText("New projectiles will spawn in an increasing amount");
             }
         });
@@ -130,7 +130,7 @@ public class ModeScreen implements Screen {
         sizeButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                VariableWrapper.mode = "SIZE";
+                Settings.mode = "SIZE";
                 textArea.setText("New projectiles will spawn 110% bigger");
             }
         });
@@ -138,7 +138,7 @@ public class ModeScreen implements Screen {
         unlimitedButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                VariableWrapper.mode = "UNLIMITED";
+                Settings.mode = "UNLIMITED";
                 textArea.setText("New projectiles will spawn every second");
             }
         });

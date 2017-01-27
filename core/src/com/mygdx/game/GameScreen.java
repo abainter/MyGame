@@ -32,13 +32,14 @@ public class GameScreen implements Screen {
     long startTime;
     int level;
     int lives;
+    Texture background;
 
 
     public GameScreen(final MyGame gam) {
         this.game = gam;
 
-        projectileImage = VariableWrapper.projectileImage;
-        targetImage = VariableWrapper.targetImage;
+        projectileImage = Settings.projectileImage;
+        targetImage = Settings.targetImage;
 
         collisionSound = Gdx.audio.newSound(Gdx.files.internal("baddrop.wav"));
         music = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
@@ -65,6 +66,7 @@ public class GameScreen implements Screen {
 
         lives = 3;
 
+        background = Settings.background;
     }
 
     private void spawnRaindrop() {
@@ -97,14 +99,15 @@ public class GameScreen implements Screen {
         // begin a new batch and draw the target and
         // all drops
         game.batch.begin();
+        game.batch.draw(background, 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         game.font.draw(game.batch, "Time remaining: " + countdown, 0 , 480);
         game.font.draw(game.batch, "Current level: "+level, 0, 450);
         game.font.draw(game.batch, "Lives remaining: "+lives, 0, 420);
         game.batch.draw(targetImage, target.x, target.y, target.width, target.height);
         for (Projectile projectile : projectiles) {
             game.batch.draw(projectileImage, projectile.getProjectile().x, projectile.getProjectile().y);
-            projectile.getProjectile().width = VariableWrapper.size;
-            projectile.getProjectile().height = VariableWrapper.size;
+            projectile.getProjectile().width = Settings.size;
+            projectile.getProjectile().height = Settings.size;
         }
         game.batch.end();
 
@@ -118,21 +121,21 @@ public class GameScreen implements Screen {
         }
 
         // check if we need to create a new raindrop
-        if (VariableWrapper.mode.equals( "UNLIMITED") && TimeUtils.nanoTime() - lastSpawnTime > 1000000000) {
+        if (Settings.mode.equals( "UNLIMITED") && TimeUtils.nanoTime() - lastSpawnTime > 1000000000) {
             spawnRaindrop();
         } else if(10-(timeNow - startTime)/1000<= 0){
             level++;
             startTime = System.currentTimeMillis();
-            if(VariableWrapper.mode.equals("SPEED")){
-                VariableWrapper.speed += 50;
+            if(Settings.mode.equals("SPEED")){
+                Settings.speed += 50;
                 spawnRaindrop();
-            } else if (VariableWrapper.mode.equals("QUANTITY")){
-                VariableWrapper.quantity += 1;
-                for(int i= 0; i < VariableWrapper.quantity; i++){
+            } else if (Settings.mode.equals("QUANTITY")){
+                Settings.quantity += 1;
+                for(int i = 0; i < Settings.quantity; i++){
                     spawnRaindrop();
                 }
             } else {
-                VariableWrapper.size *= 1.1;
+                Settings.size *= 1.1;
                 spawnRaindrop();
             }
         }
@@ -155,6 +158,7 @@ public class GameScreen implements Screen {
         }
         if(lives <= 0){
             game.setScreen(new EndScreen(game));
+            Settings.makeDefault();
             dispose();
         }
 

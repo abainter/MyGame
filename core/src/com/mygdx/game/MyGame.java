@@ -10,7 +10,7 @@ public class MyGame extends Game {
 
 	@Override
 	public void create () {
-		VariableWrapper variableWrapper = new VariableWrapper();
+		Settings settings = new Settings();
 		batch = new SpriteBatch();
         font = new BitmapFont();
         font.getData().setScale(1,1);

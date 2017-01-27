@@ -65,6 +65,11 @@ public class MainMenuScreen implements Screen {
         dodge.setSize(300,400);
         stage.addActor(dodge);
 
+        Image dodgeName = new Image(new Texture(Gdx.files.internal("dodge-name.png")));
+        dodgeName.setPosition(400, 200);
+        dodgeName.setSize(800, 600);
+        stage.addActor(dodgeName);
+
         final TextButton playButton = new TextButton("PLAY", textButtonStyle);
         playButton.setPosition(400,200);
         stage.addActor(playButton);

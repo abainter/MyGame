@@ -29,11 +29,11 @@ public class Projectile {
             projectile.x = 800;
             projectile.y = MathUtils.random(0, 480);
         }
-        size = VariableWrapper.size;
+        size = Settings.size;
         projectile.width = size;
         projectile.height = size;
-        xSpeed = VariableWrapper.speed;
-        ySpeed = VariableWrapper.speed;
+        xSpeed = Settings.speed;
+        ySpeed = Settings.speed;
     }
 
     public Rectangle getProjectile(){
